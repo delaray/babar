@@ -1,0 +1,14 @@
+Web and Clojure Questions for Heow
+
+1. Once I buy a domain on Ghandi, how do I get it assigned to my fixed external IP.
+
+2. Will stopping my instance on GCloud save money?
+
+3. How do I connect to my instance on android?
+
+CONTEXT:
+	- Compojure: Route definitions
+	- Hiccup:    HTML Generation
+
+4. What is the ideal stackframe for FE WEb Development in Clojure?
+

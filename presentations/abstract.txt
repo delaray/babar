@@ -1,0 +1,7 @@
+Babar: Knowledge Recognition, Extraction and Represention
+
+Babar: Knowledge Recognition, Extraction and Representation
+
+Abstract: Babar: Knowledge Recognition, Extraction and Representation
+
+Abstract: Babar is a research project in the field of Artificial Intelligence. It aims to bridge together Neural AI and Symbolic AI. As such it is implemented in three different programming languages: Clojure, Python and CLOS. The Clojure component implements all things related to web development, the Python module implements all things related to Neural Nets, and the Common Lisp module implements all things related to Symbolic AI. This latter includes an English Language Parser and Semantic Networks represented by an in-memory Hypergraph. This presentation will on the one hand present each of these components and on the other hand zoom in, so to speak, on individual aspects with code examples. Specifically the English Language parser will be examined in detail. The parser is implemented as four distinct levels: The Simple Parser, The Generic Parser, The Domain Parser and the English Parser. We will then present the knowledge extraction aspect and bridge this with the Neural Network component. Ultimately we will argue what can be termed "Neural AI" and "Symbolic AI" are at not at odds with each other but rather complement each other. In summary Artificial Intelligence is not a question of "brain" or "mind", but rather a question of "brain" and "mind".
