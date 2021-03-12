@@ -13,43 +13,25 @@ THe Clojure module, Clobar, implements the user interface and web development as
 The Python module, Pybar, is used for web scraping and crawling as well as for the Deep Learning aspects of the system. Finally the CLOS module, Lispbar, is used to implement the symbolic AI elements of the project.
 
 
-## Environment Variables
+# Installation
 
-The following environment variables are used to parameterize the various communication and autrhentication elements.
-
-### Project Directories
-
-Each module has it's own directory, but there is also a common directory for shared data.
-
-BABAR_DIR  
-BABAR_CLOBAR_DIR  
-BABAR_PYBAR_DIR  
-BABAR_LISPBAR_DIR  
-
-### Server Ports  
-BABAR_CLOBAR_PORT (*default is 3000*)  
-BABAR_PYBAR_PORT  (*default is 4000*)  
-BABAR_LISPBAR_PORT (*default is 5000*)  
-
-### Database Access  
-BABAR_DB_USER  
-BABAR_DB_PW  
-BABAR_DB_NAME  
-BABAR_DB_PORT  
-BABAR_EMAIL_USER  
-BABAR_EMAIL_PWD  
+[Setup instructions](doc/setup.md)
 
 # Clobar
 
-HTML Generation  
+HTML Generation
+Clojure Libraries  
 Javascript Libraries  
+
 
 
 # Pybar
 
-### Crawling and scraping Wikipedia  
-### Other data sources  
-### LSTM based Neural Networks  
+Crawling and scraping
+Data sources
+sNeural Networks  
+LSTM based Classifiers
+
 
 
 # Lispbar  
@@ -60,17 +42,12 @@ Javascript Libraries
 
 [Parser Documentation](doc/parser.md)
 
-### Learning Grammar Productions
-
-### Knowledge Extraction
-
-### Clausal Form Logic
-
-### Semantic Nets
-
-### Clustering Wikipedia Topics
-
-### Inductive Logic Programming / FOIL
+Learning Grammar Productions
+Knowledge Extraction
+Clausal Form Logic
+Semantic Nets
+Clustering Wikipedia Topics
+Inductive Logic Programming
 
 
 ## Postgres
