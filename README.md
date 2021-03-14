@@ -1,6 +1,6 @@
 # Babar Knowledge System
 
-![Logo](doc/images/brain-activity.jpg)
+![Logo](doc/images/babar-logo-medium.jpg)
 
 Babar is an independent research project in the field of Artificial Intelligence.
 
@@ -19,7 +19,7 @@ The Python module, Pybar, is used for web scraping and crawling as well as for t
 
 # Clobar
 
-HTML Generation
+HTML Generation  
 Clojure Libraries  
 Javascript Libraries  
 
@@ -61,4 +61,6 @@ Browsing Wikipedia
 Classifying Google Search Results  
 
 
+## User Interface Examples
 
+[Screenshot](doc/screenshots.md)
