@@ -63,4 +63,4 @@ Classifying Google Search Results
 
 ## User Interface Examples
 
-[Screenshot](doc/screenshots.md)
+[Screenshots](doc/screenshots.md)

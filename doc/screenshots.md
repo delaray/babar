@@ -2,26 +2,26 @@
 
 ## Login Screen
 
-![Login](doc/images/login-page.jpg)
+![Login](images/login-page.jpg)
 
 
 ## Home Page
 
-![Home](doc/images/home-page.jpg)
+![Home](images/home-page.jpg)
 
 
 ## LSTM Classifier
 
-![Classifier](doc/images/classifier-example.jpg)
+![Classifier](images/classifier-example.jpg)
 
 
 ## English Parser
 
-![Parser](doc/images/parser-example.jpg)
+![Parser](images/parser-example.jpg)
 
 ## Postgres Table Counts
 
-![Tables](doc/images/postgres-table-counts.jpg)
+![Tables](images/postgres-table-counts.jpg)
 
 
 
