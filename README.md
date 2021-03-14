@@ -27,10 +27,10 @@ Javascript Libraries
 
 # Pybar
 
-Crawling and scraping
-Data sources
-sNeural Networks  
-LSTM based Classifiers
+Crawling and scraping  
+Data sources  
+Neural Networks  
+LSTM based Classifiers  
 
 
 
