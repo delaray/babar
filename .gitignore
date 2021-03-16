@@ -3,5 +3,9 @@ pybar
 lispbar
 pgbar
 rebar
-data
+data/models
+data/results
+data/training
+data/db
+data/logs
 wikidb.zip

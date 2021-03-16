@@ -1,0 +1,11 @@
+sentence, parse-trees, status
+A cat has four legs, 1, correct
+A cat is an animal, 2, incorrect
+The cat went into the garden, 3, incorrect
+The cat runs into the garden, 1, correct
+The big cat chased the little mouse in the kitchen, 2, incorrect
+Great books provide knowledge to many different persons, 1, correct
+A big green frog was on the log in the water, 1, correct
+John went to the Louvre museum for the Monet exhibit, 3, incorrect
+The technology in computers uses advanced circuits, 1, incorrect
+The story had been amusing, 0, Error
