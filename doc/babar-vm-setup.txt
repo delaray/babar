@@ -202,16 +202,23 @@ To generate this message, Docker took the following steps:
     to your terminal.
 
 To try something more ambitious, you can run an Ubuntu container with:
- $ docker run -it ubuntu bash
+
+docker run -it ubuntu bash
 
 Share images, automate workflows, and more with a free Docker ID:
  https://hub.docker.com/
 
 For more examples and ideas, visit:
- https://docs.docker.com/get-started/
+
+https://docs.docker.com/get-started/
 
 #-----------------------------------------------------------------
+# GIT Tricks
+#-----------------------------------------------------------------
 
+# Removing accidently comitted large files
+
+git filter-branch --tree-filter 'rm -rf path/to/your/file' HEAD
 
 #-----------------------------------------------------------------
 #End of File
