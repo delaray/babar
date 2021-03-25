@@ -1,0 +1,17 @@
+On the topic of Google Search, Pagerank, Semantics and contextual relevancy...
+
+On of the goals of my Babar AI project is to enhance the delivery and presentation of Google Search results.
+
+The screenshot below displaya a table containing the first 90 results of using Google Search on the word "iguana".
+
+The first two results are Wikipedia pages which are actually essentially the same since the most common type of Iguana is appropriately named the "Common Green Iguana" (Iguana iguana).
+
+The third result is the Iguana Cafe in Paris, and kudos to Google for getting the location right as I do in fact live in Paris.
+
+Then we switch to a Youtube video on the extinction threat of the rare Blue Iguana.
+
+Next we're back to the taxonomic aspects of the Green Iguana as provided by Encyclopedia Britanica...
+
+Anyway my point is that if you actually take a close look at the Google Search results there is a noticible lack of coherence at the very least at the presentation level.
+
+Sure you can specify clever keywords that focus your intent and second guess Google Search in order to get a more relevant list of hits on the first page of results. But in that in that case where is the (artificial) intelligence actually coming from?
