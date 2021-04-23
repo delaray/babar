@@ -1,8 +1,7 @@
-Name: babar
-Zone: europe-west2-c	
+NAME: babar
+ZONE: europe-west2-c	
+FIXED EXTERNAL IP: 35.189.76.240
 Ephemeral Internal IP: 10.154.0.2
-Fixed External IP: 35.189.76.240 
-
 
 Your public IP address from mobile phone internet
 92.184.97.175
@@ -23,7 +22,8 @@ sudo apt install python3.8
 
 sudo apt update
 
-sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
+sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev
+                 libnss3-dev libssl-dev libreadline-dev libffi-dev wget
 
 sudo apt update
 
@@ -32,7 +32,6 @@ sudo apt install python3-pip
 sudo pip3 install --upgrade pip
 
 pip3 install ipython
-
 
 -----------------------------------------------------------------
 CLOJURE SETUP
@@ -137,7 +136,7 @@ sudo service postgresql restart
 #SAVE & RESTORE POSTSGRESQL 
 #-----------------------------------------------------------------
 
-# Dimp PG Database
+# dump PG Database
 pg_dump -U postgres wikidb > wikidb.sql
 
 #-----------------------------------------------------------------
