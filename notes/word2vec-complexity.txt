@@ -1,0 +1,6 @@
+Word2VEC Complexity
+
+Time: O(N * log(V))
+
+where N is corpus size, V is the vocabulary size.
+
