@@ -17,6 +17,10 @@ The Python module, Pybar, is used for web scraping and crawling as well as for t
 
 [Setup instructions](doc/setup.md)
 
+# Database Configuration
+
+[Configuration](doc/configuration.md)
+
 # Clobar
 
 HTML Generation  
@@ -30,9 +34,7 @@ Javascript Libraries
 Crawling and scraping  
 Data sources  
 Neural Networks  
-LSTM based Classifiers  
-
-
+LSTM Classifiers  
 
 # Lispbar  
 
