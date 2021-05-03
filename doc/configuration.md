@@ -4,6 +4,7 @@
 
 The following environment variables should be set to appropriate values:
 
+BABAR_DIR
 BABAR_DB_NAME  
 BABAR_DB_PORT  
 BABAR_DB_USER  
