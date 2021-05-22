@@ -1,0 +1,6 @@
+LOG OF COMPUTATIONS ON TOPICS & EDGES OF WIKIEDIA GRAPH
+-------------------------------------------------------
+
+1. Indegree, outdegree and weights computed for all topics.
+2. Strongly related relation computed for all edges.
+3. Delete all topics containing '#'.
