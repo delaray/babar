@@ -9,4 +9,9 @@ data/training
 data/db
 data/big
 data/logs
+<<<<<<< HEAD
 wikidb.zip
+=======
+wikidb.sql
+wikidb.zip
+>>>>>>> 3f836b5ceacd0f91e0ada39d05fc4b9e71a6c285
