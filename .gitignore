@@ -8,4 +8,5 @@ data/results
 data/training
 data/db
 data/logs
+wikidb.sql
 wikidb.zip
