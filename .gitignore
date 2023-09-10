@@ -7,5 +7,6 @@ data/models
 data/results
 data/training
 data/db
+data/big
 data/logs
 wikidb.zip
