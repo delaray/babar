@@ -1,14 +1,12 @@
 NAME: babar
-ZONE: europe-west2-c	
-FIXED EXTERNAL IP: 35.189.76.240
+ZONE: europe-west1-b
+FIXED EXTERNAL IP: 104.199.54.108
 Ephemeral Internal IP: 10.154.0.2
 
 Your public IP address from mobile phone internet
 92.184.97.175
 
------------------------------------------------------------------
-PYTHON SETUP
------------------------------------------------------------------
+Python Setup
 
 sudo apt update
 
@@ -33,9 +31,8 @@ sudo pip3 install --upgrade pip
 
 pip3 install ipython
 
------------------------------------------------------------------
-CLOJURE SETUP
------------------------------------------------------------------
+
+## Clojure Setup
 
 sudo apt update
 
@@ -51,133 +48,166 @@ sudo ./linux-install-1.10.1.739.sh
 
 sudo apt update
 
-# Download the lein script:
+Download the lein script:
 https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
 
-# Make it executable:
+Make it executable:
 chmod a+x lein
 
-# Run it:
+Run it:
 ./lein
 
-# Move it to /usr/bin
+Move it to /usr/bin
 sudo mv lein /usr/bin
 
 
------------------------------------------------------------------
-EMACS SETUP
------------------------------------------------------------------
+## EMACS SETUP
 
-sudo add-apt-repository ppa:kelleyk/emacs
-
+sudo add-apt-repository universe
 sudo apt update
 
-sudo apt install emacs26
+sudo apt install emacs
 
 
------------------------------------------------------------------
-SBCL SETUP
------------------------------------------------------------------
 
-sudo apt update
+## SBCL Setup
 
-sudo apt install sbcl
+    sudo apt update
+    sudo apt install sbcl
 
 
------------------------------------------------------------------
-POSTSGRESQL SETUP
------------------------------------------------------------------
+----
 
-# PG default port is 5432
-
-sudo apt update
-
-sudo apt install postgresql  postgresql-client postgresql-contrib
-
-# PG creates a default 'postgres' user role. There are two ways
-# to connect to the Postgres prompt (\q to exit)
-
-# Method 1
-sudo -i -u postgres
-psql
-
-# Method 2
-sudo -u postgres psql
-
-# Create a new user babar and associated db babar
-sudo -u postgres createuser --interactive
-
-User: postgres
-PWD: Terrapin1
-
-User: babar
-PWD: Eleph365
-
-# Edit configuration and replace locahost with your IP (or range)
-# Conf file: /etc/postgresql/9.5/main/pg_hba.conf
-sudo emacs /etc/postgresql/9.5/main/pg_hba.conf
-
-# IPv4 local connections, specify an IP range of 16K:
-host    all             all             92.184.0.0/16        md5
+## PostsgreSQL Setup
 
 
-# Next Edit postgresql.conf
-# Conf file: /etc/postgresql/9.5/main/postgresql.conf
-sudo emacs /etc/postgresql/9.5/main/postgresql.conf
+PG default port is 5432
 
-# Replace 'localhost' with '*'
-listen_addresses = '*'
+    sudo apt update
 
-# Exit emacs and restart PG service
-sudo service postgresql restart
+    sudo apt install postgresql  postgresql-client postgresql-contrib
+	
+	sudo systemctl start postgresql@12-main
+
+### PG creates a default 'postgres' user role.
+
+There are two ways to connect to the psql prompt (\q to exit)
+
+    sudo -u postgres psql
+	
+### Edit configuration and replace locahost with your IP (or range)
+
+Conf file: /etc/postgresql/9.5/main/pg_hba.conf
+
+    sudo emacs /etc/postgresql/*/main/pg_hba.conf
+
+    # IPv4 local connections, specify an IP range of 16K:
+    host    all             all             92.184.0.0/16        md5
+
+### Restore Postsgresql DB
 
 
-#-----------------------------------------------------------------
-#SAVE & RESTORE POSTSGRESQL 
-#-----------------------------------------------------------------
+    # First need to create the database
+    CREATE DATABASE wikidb;
 
-# dump PG Database
-pg_dump -U postgres wikidb > wikidb.sql
+	# Resore using psql after creating DB.
+	psql -d wikidb -f wikidb.sql
+	
+    # This doesn't work anymore (old method)
+    \i /home/pierre/wikidb.sql;
 
-#-----------------------------------------------------------------
+    # or at the command line (old method)
+    pg_restore -U postgres -d wikidb.sql
 
-# Restore PG Database
-sudo -u postgres psql
 
-# First need to create the database
-CREATE DATABASE wikidb
+### Create additionalr oles
 
-# Now restore the dumpled sql file
+    CREATE ROLE pierre WITH SUPERUSER LOGIN CREATEDB
+	ENCRYPTED PASSWORD '<pasword>';
 
-# 1. In PSQL 
-\i /home/pierre/wikidb.sql
+    CREATE ROLE babar WITH SUPERUSER LOGIN CREATEDB
+	ENCRYPTED PASSWORD '<pasword>';
+	
+	CREATE DATABASE wikidb OWNER babar;
 
-# 2. At the command line
-pg_restore -U postgres -d wikidb.sql
 
-#-----------------------------------------------------------------
-# Docker Setup
-#-----------------------------------------------------------------
 
-# Remove any old versions
-sudo apt-get remove docker docker-engine docker.io containerd runc
+### Edit postgresql.conf
 
-# Setup the repository
-sudo apt-get update
-sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+Conf file: /etc/postgresql/*/main/postgresql.conf
 
-# Add Docker GPG Key
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    sudo emacs /etc/postgresql/9.5/main/postgresql.conf
 
-# Verify key
-sudo apt-key fingerprint 0EBFCD88
+    # Replace 'localhost' with '*'
+    listen_addresses = '*'
 
-# Set up stable repository
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+Exit emacs and restart PG service
 
-# Install Docker engine
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
+    sudo service postgresql restart
+
+
+### Save & Restore Postsgresql 
+
+
+    # Dump PG Database
+    pg_dump -U postgres wikidb > wikidb.sql
+
+    # Restore PG Database
+    sudo -u postgres psql
+
+    # First need to create the database
+    CREATE DATABASE wikidb;
+
+    # Now restore the dumpled sql file
+    \i /home/pierre/wikidb.sql;
+
+    # or at the command line
+    pg_restore -U postgres -d wikidb.sql
+
+
+### Uninstall PostgreSQL
+  
+    sudo apt-get --purge remove postgresql
+    sudo apt-get purge postgresql*
+    sudo apt-get --purge remove postgresql postgresql-doc postgresql-common
+	
+	sudo apt autoremove
+	
+	dpkg -l | grep postgres
+	sudo apt-get --purge remove {POSTGRESS-PACKAGE NAME}
+	
+	sudo rm -rf /var/lib/postgresql/
+	sudo rm -rf /var/log/postgresql/
+	sudo rm -rf /etc/postgresql/
+	
+## Docker Setup
+
+
+Remove any old versions
+    
+	sudo apt-get remove docker docker-engine docker.io containerd runc
+
+Setup the repository
+
+    sudo apt-get update
+    sudo apt-get install apt-transport-https ca-certificates gnupg-agent software-properties-common
+
+Add Docker GPG Key
+
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+Verify key
+
+    sudo apt-key fingerprint 0EBFCD88
+
+Set up stable repository
+
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+Install Docker engine
+
+    sudo apt-get update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 #-----------------------------------------------------------------
 # Verify Docker Installation
