@@ -10,20 +10,15 @@ Your public IP address from mobile phone internet
 PYTHON SETUP
 -----------------------------------------------------------------
 
-sudo apt update
+    sudo apt update
 
-sudo apt install software-properties-common
+    sudo add-apt-repository ppa:deadsnakes/ppa
 
-sudo add-apt-repository ppa:deadsnakes/ppa
+    sudo apt install python3.12
 
-sudo apt update
+Then update the symbolic links to python and python3.
 
-sudo apt install python3.8
 
-sudo apt update
-
-sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev
-                 libnss3-dev libssl-dev libreadline-dev libffi-dev wget
 
 sudo apt update
 
@@ -83,7 +78,13 @@ sudo apt update
 
 sudo apt install emacs26
 
+-----------------------------------------------------------------
+Miniconda
+-----------------------------------------------------------------
 
+     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+     
 -----------------------------------------------------------------
 SBCL SETUP
 -----------------------------------------------------------------
