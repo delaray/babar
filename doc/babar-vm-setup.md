@@ -85,37 +85,57 @@ sudo apt install sbcl
 
 
 -----------------------------------------------------------------
-POSTSGRESQL SETUP
+## POSTSGRESQL SETUP
 -----------------------------------------------------------------
 
-# PG default port is 5432
+PG default port is 5432
 
 sudo apt update
 
 sudo apt install postgresql  postgresql-client postgresql-contrib
 
-# PG creates a default 'postgres' user role. There are two ways
-# to connect to the Postgres prompt (\q to exit)
+PG creates a default 'postgres' user role. There are two ways
+to connect to the Postgres prompt (\q to exit)
 
-# Method 1
+### Method 1
 sudo -i -u postgres
 psql
 
-# Method 2
+#### Method 2
 sudo -u postgres psql
 
-# Create a new user babar and associated db babar
+### Create new users pierre & babar
 sudo -u postgres createuser --interactive
 
-User: postgres
-PWD: Terrapin1
+User: pierre
 
 User: babar
-PWD: Eleph365
 
-# Edit configuration and replace locahost with your IP (or range)
-# Conf file: /etc/postgresql/9.5/main/pg_hba.conf
-sudo emacs /etc/postgresql/9.5/main/pg_hba.conf
+Go onto psql to set PWD
+
+pierre@babar:/etc/postgresql/12$ sudo -u postgres psql template1
+psql (12.19 (Ubuntu 12.19-0ubuntu0.20.04.1))
+Type "help" for help.
+
+    template1=# ALTER USER postgres with encrypted password '<pwd>';
+    ==> ALTER ROLE
+    template1=# ALTER USER babar with encrypted password '<pwd>';
+    ==> ALTER ROLE
+    template1=# ALTER USER pierre with encrypted password '<pwd>';
+    ==> ALTER ROLE
+    template1=# \q
+	
+### Edit configuration
+
+Conf file: /etc/postgresql/12/main/pg_hba.conf
+
+    sudo emacs /etc/postgresql/12/main/pg_hba.conf
+	
+Change /etc/postgresql/12/main/postgresql.conf
+
+    sudo emacs /etc/postgresql/12/main/postgresql.conf
+	
+Replace localhost with '*' in listen statement.
 
 # IPv4 local connections, specify an IP range of 16K:
 host    all             all             92.184.0.0/16        md5
