@@ -34,7 +34,7 @@ sudo pip3 install --upgrade pip
 pip3 install ipython
 
 -----------------------------------------------------------------
-CLOJURE SETUP
+ORACLE JDK SETUP
 -----------------------------------------------------------------
 
 sudo apt update
@@ -43,26 +43,35 @@ sudo apt install default-jre
 
 sudo apt install default-jdk
 
-curl -O https://download.clojure.org/install/linux-install-1.10.1.739.sh
+-----------------------------------------------------------------
+OPEN JDK SETUP
+-----------------------------------------------------------------
 
-chmod +x linux-install-1.10.1.739.sh
+    sudo apt-get install -y software-properties-common wget apt-transport-https
+	
+    sudo mkdir -p /etc/apt/keyrings
+	
+    wget -O - https://packages.adoptium.net/artifactory/api/gpg/key/public | sudo tee /etc/apt/keyrings/adoptium.asc
+	
+    echo "deb [signed-by=/etc/apt/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" | sudo tee /etc/apt/sources.list.d/adoptium.list
+	
+    sudo apt-get update
+	
+    sudo apt-get install -y temurin-17-jdk
+	
+    java -version
 
-sudo ./linux-install-1.10.1.739.sh
+-----------------------------------------------------------------
+CLOJURE SETUP
+-----------------------------------------------------------------
 
-sudo apt update
+curl -L -O https://github.com/clojure/brew-install/releases/latest/download/linux-install.sh
 
-# Download the lein script:
-https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+sudo mv lein /usr/local/bin/lein
 
-# Make it executable:
-chmod a+x lein
+sudo chmod a+x /usr/local/bin/lein
 
-# Run it:
-./lein
-
-# Move it to /usr/bin
-sudo mv lein /usr/bin
-
+lein version 
 
 -----------------------------------------------------------------
 EMACS SETUP
