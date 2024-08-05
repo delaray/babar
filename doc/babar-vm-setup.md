@@ -1,9 +1,9 @@
 # Babar VM Setup Instractions
 
-NAME: babar  
-ZONE: europe-west2-c  
-FIXED EXTERNAL IP: 35.189.76.240  
-Ephemeral Internal IP: 10.154.0.2  
+**Name**: babar  
+**Zone**: europe-west2-c  
+**External IP**: 104.199.54.108    
+
 
 Your public IP address from mobile phone internet:  
 92.184.97.175  
