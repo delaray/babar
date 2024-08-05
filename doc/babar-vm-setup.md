@@ -1,3 +1,5 @@
+# Babar VM Setup Instractions
+
 NAME: babar
 ZONE: europe-west2-c	
 FIXED EXTERNAL IP: 35.189.76.240
@@ -6,9 +8,8 @@ Ephemeral Internal IP: 10.154.0.2
 Your public IP address from mobile phone internet
 92.184.97.175
 
------------------------------------------------------------------
-PYTHON SETUP
------------------------------------------------------------------
+
+## PYTHON SETUP
 
     sudo apt update
 
@@ -16,31 +17,29 @@ PYTHON SETUP
 
     sudo apt install python3.12
 
-Then update the symbolic links to python and python3.
+Then update the symbolic links to python and python3 in /usr/bin
+
+Install PIP by downloading get_pip.py scrupt and update symbolic links
+
+    sudo apt update
+
+    sudo apt install python3-pip
+
+    sudo pip3 install --upgrade pip
+
+    pip3 install ipython
 
 
+## ORACLE JDK SETUP
 
-sudo apt update
+    sudo apt update
 
-sudo apt install python3-pip
+    sudo apt install default-jre
 
-sudo pip3 install --upgrade pip
+    sudo apt install default-jdk
 
-pip3 install ipython
 
------------------------------------------------------------------
-ORACLE JDK SETUP
------------------------------------------------------------------
-
-sudo apt update
-
-sudo apt install default-jre
-
-sudo apt install default-jdk
-
------------------------------------------------------------------
-OPEN JDK SETUP
------------------------------------------------------------------
+## OPEN JDK SETUP
 
     sudo apt-get install -y software-properties-common wget apt-transport-https
 	
@@ -56,27 +55,23 @@ OPEN JDK SETUP
 	
     java -version
 
------------------------------------------------------------------
-CLOJURE SETUP
------------------------------------------------------------------
+## CLOJURE SETUP
 
-curl -L -O https://github.com/clojure/brew-install/releases/latest/download/linux-install.sh
+    curl -L -O https://github.com/clojure/brew-install/releases/latest/download/linux-install.sh
 
-sudo mv lein /usr/local/bin/lein
+    sudo mv lein /usr/local/bin/lein
 
-sudo chmod a+x /usr/local/bin/lein
+    sudo chmod a+x /usr/local/bin/lein
 
-lein version 
+    lein version 
 
------------------------------------------------------------------
-EMACS SETUP
------------------------------------------------------------------
+## EMACS SETUP
 
 sudo add-apt-repository ppa:kelleyk/emacs
 
 sudo apt update
 
-sudo apt install emacs26
+sudo apt install emacs
 
 -----------------------------------------------------------------
 Miniconda
@@ -135,55 +130,55 @@ Type "help" for help.
     ==> ALTER ROLE
     template1=# \q
 	
-### Edit configuration
-
-Conf file: /etc/postgresql/12/main/pg_hba.conf
+### Edit configuration pg_hba.conf
 
     sudo emacs /etc/postgresql/12/main/pg_hba.conf
-	
+
+Add IP4 host:
+
+    host    all             all             92.184.0.0/16        md5
+
+### Edit configuration postgresql.conf
+
 Change /etc/postgresql/12/main/postgresql.conf
 
     sudo emacs /etc/postgresql/12/main/postgresql.conf
 	
 Replace localhost with '*' in listen statement.
 
-# IPv4 local connections, specify an IP range of 16K:
-host    all             all             92.184.0.0/16        md5
+
+### Restart PG service
+
+    sudo service postgresql restart
 
 
-# Next Edit postgresql.conf
-# Conf file: /etc/postgresql/9.5/main/postgresql.conf
-sudo emacs /etc/postgresql/9.5/main/postgresql.conf
+## SAVE & RESTORE POSTSGRESQL 
 
-# Replace 'localhost' with '*'
-listen_addresses = '*'
+### Dump PG Database
 
-# Exit emacs and restart PG service
-sudo service postgresql restart
+    pg_dump -U postgres wikidb > wikidb.sql
 
+### Restore PG Database
 
-#-----------------------------------------------------------------
-#SAVE & RESTORE POSTSGRESQL 
-#-----------------------------------------------------------------
+    sudo -u postgres psql
 
-# dump PG Database
-pg_dump -U postgres wikidb > wikidb.sql
+First need to create the database
 
-#-----------------------------------------------------------------
+    CREATE DATABASE wikidb;
 
-# Restore PG Database
-sudo -u postgres psql
+Now restore the dumpled sql file
 
-# First need to create the database
-CREATE DATABASE wikidb
+1. From CLI
 
-# Now restore the dumpled sql file
+   postgresql -f <filename> -d wikidb
+   
+2. From psql  
 
-# 1. In PSQL 
-\i /home/pierre/wikidb.sql
+    \i /home/pierre/wikidb.sql
 
-# 2. At the command line
-pg_restore -U postgres -d wikidb.sql
+3. Using pg_restore
+
+    pg_restore -U postgres -d wikidb.sql
 
 #-----------------------------------------------------------------
 # Docker Setup
